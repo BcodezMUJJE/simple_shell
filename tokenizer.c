@@ -47,11 +47,11 @@ s[j][m] = 0;
 s[j] = NULL;
 }
 /**
- * **strtow2 - This splits a string into words.
+ * **strtow2 - This splits a string into words
  * @d: delimeter.
  * @str: input string.
  *
- * Rturn: A pointer to an array of strings, or NULL on failure
+ * Return: A pointer to an array of strings, or NULL on failure
  */
 char **strtow2(char *str, char *d)
 {
@@ -95,7 +95,6 @@ for (m = 0 ; m < k ; m++)
 s[j][m] = str[i++];
 s[j][m] = 0;
 }
-
-s[j] = NULL;
-return (s);
+	s[j] = NULL;
+	return (s);
 }
