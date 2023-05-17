@@ -87,8 +87,8 @@ info->cmd_buf_type = CMD_NORM;
 return (_strlen(p));
 }
 
-*buf_p = buf; /* else not a chain, pass back buffer from _getline() */
-return (r); /* return length of buffer from _getline() */
+*buf_p = buf; /* if not a chain, pass back buffer from _getline() */
+return (r); /* return the length of buffer from _getline() */
 }
 
 /**
