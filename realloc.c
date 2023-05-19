@@ -19,11 +19,11 @@ return (s);
  * ffree - it frees a string of strings
  * @pp: the string of strings
  */
-void ffree(char **a = pp)
+void ffree(char **pp)
 {
 char **a = pp;
 
-if (1pp)
+if (!pp)
 	return;
 while (*pp)
 	free(*pp++);
