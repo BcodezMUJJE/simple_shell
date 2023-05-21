@@ -48,7 +48,7 @@ while (*needle)
 if (*needle++ != *haystack++)
 return (NULL);
 
-return ((char)haystack);
+return ((char *)haystack);
 }
 /**
  * _strcat - it concatenates two strings

@@ -12,15 +12,16 @@
 #include <string.h>
 #include <sys/types.h>
 
-/* for read/write buffers*/
+/* for read/write buffers */
 #define BUF_FLUSH -1
 #define READ_BUF_SIZE 1024
 #define WRITE_BUF_SIZE 1024
+
 /* for command chaining */
 #define CMD_CHAIN	3
 #define CMD_OR			1
 #define CMD_AND			2
-#define CMD_NORM	O
+#define CMD_NORM	0
 /* for convert_number() */
 #define USE_STRTOK 0
 #define USE_GETLINE 0
@@ -28,14 +29,14 @@
 #define HIST_MAX	4096
 #define HIST_FILE	".simple_shell_history"
 
-Extern char **environ
+extern char **environ;
 /**
  * struct  liststr - A singly linked list
  * @str: A string
  * @num: A number field
  * @next: A point to the next node
  */
-Typedef struct liststr
+typedef struct liststr
 {
 int num;
 char *str;
@@ -64,7 +65,7 @@ struct liststr *next;
  * @history: History node
  * @env_changed: On if environ was changed
  */
-Typedef struct passinfo
+typedef struct passinfo
 {
 int status;
 int env_changed;
@@ -86,7 +87,7 @@ int histcount;
 char *fname;
 }
 info_t;
-#define INFO_INIT\
+#define INFO_INIT \
 {NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
 	0, 0, 0}
 /**
@@ -94,7 +95,7 @@ info_t;
  * @func: function
  * @type: a builtin command flag
  */
-Typedef struct builtin
+typedef struct builtin
 {
 char *type;
 int (*func)(info_t *);
@@ -109,14 +110,14 @@ void fork_cmd(info_t *);
 /* toem_parser.c */
 int is_cmd(info_t *, char *);
 char *dup_chars(char *, int, int);
-char *find_path(info_t *, char *);
+char *find_path(info_t *, char *, char *);
 
 /* loophsh.c */
 int loophsh(char **);
 
 /* toem_string.c */
 int _strlen(char *);
-int _strcmp(char *);
+int _strcmp(char *, char *);
 char *starts_with(const char *, const char *);
 char *_strcat(char *, char *);
 
@@ -127,12 +128,12 @@ int _putfd(char c, int fd);
 int _putsfd(char *str, int fd);
 
 /* toem_string1.c */
-char **_strcpy(char *, char *);
+char *_strcpy(char *, char *);
 void _puts(char *);
 char *_strdup(const char *);
 int _putchar(char);
 
-/* toem_exitz */
+/* toem_exits.c */
 char *_strncpy(char *, char *, int);
 char *_strncat(char *, char *, int);
 char *_strchr(char *, char);
@@ -149,7 +150,7 @@ void *_realloc(void *, char, unsigned int);
 char **_strtow2(char *, char);
 char **_strtow(char *, char *);
 
-/* toem_atoic.c */
+/* toem_atoi.c */
 int interactive(info_t *);
 int _atoi(char *);
 int _isalpha(int);
@@ -164,12 +165,12 @@ int _erratoi(char *);
 
 /* toem_builtin.c */
 int _myexit(info_t *);
-int _myhelp(info_t *);
 int _mycd(info_t *);
+int _myhelp(info_t *);
 
 /* toem_builtin1.c */
-int myalias(info_t *);
-int myhistory(info_t *);
+int _myhistory(info_t *);
+int _myalias(info_t *);
 
 /* toem_environ.c */
 int _myenv(info_t);

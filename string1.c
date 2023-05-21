@@ -74,6 +74,6 @@ write(1, buf, i);
 i = 0;
 }
 if (c != BUF_FLUSH)
-BUF[i++] = c;
+buf[i++] = c;
 return (1);
 }
