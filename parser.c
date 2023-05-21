@@ -54,6 +54,7 @@ int i = 0, curr_pos = 0;
 
 if (!pathstr)
 return (NULL);
+
 if ((_strlen(cmd) > 2) && starts_with(cmd, "./"))
 {
 if (is_cmd(info, cmd))

@@ -28,7 +28,7 @@ buf[j] = 0; /* replace semicolon with null */
 info->cmd_buf_type = CMD_CHAIN;
 }
 else
-	return (0);
+return (0);
 *p = j;
 return (1);
 }
