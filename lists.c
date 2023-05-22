@@ -82,12 +82,12 @@ return (new_node);
 */
 size_t print_list_str(const list_t *h)
 {
-size_t I = 0;
+size_t i = 0;
 
 while (h)
 {
-_puts(h->str ? h->str : “(nil)”);
-_puts(“\n”);
+_puts(h->str ? h->str : "(nil)");
+_puts("\n");
 h = h->next;
 i++;
 }
@@ -104,7 +104,7 @@ return (i);
 int delete_node_at_index(list_t **head, unsigned int index)
 {
 list_t *node, *prev_node;
-unsigned int I = 0;
+unsigned int i = 0;
 
 if (!head || !*head)
 return (0);
@@ -120,7 +120,7 @@ return (1);
 node = *head;
 while (node)
 {
-if (I == index)
+if (i == index)
 {
 prev_node->next = node->next;
 free(node->str);

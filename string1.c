@@ -19,6 +19,7 @@ i++;
 dest[i] = 0;
 return (dest);
 }
+
 /**
  * _strdup - it duplicates a string
  * @str: A string to be duplicated
@@ -26,20 +27,21 @@ return (dest);
  */
 char *_strdup(const char *str)
 {
-char *ret;
 int length = 0;
+char *ret;
 
-if (str == NULL)
-return (NULL);
+if (str == 0)
+return (0);
 while (*str++)
-	length++;
+length++;
 ret = malloc(sizeof(char) * (length + 1));
 if (!ret)
-return (NULL);
-for (length++ ; length-- ;)
+return (0);
+for (length++; length--;)
 ret[length] = *--str;
 return (ret);
 }
+
 /**
  * _puts - This prints an input string
  * @str: string to be printed
@@ -50,13 +52,14 @@ void _puts(char *str)
 int i = 0;
 
 if (!str)
-	return;
+return;
 while (str[i] != '\0')
 {
 _putchar(str[i]);
 i++;
 }
 }
+
 /**
  * _putchar - this prints the character c to stdout
  * @c: char to print
@@ -68,7 +71,7 @@ int _putchar(char c)
 static int i;
 static char buf[WRITE_BUF_SIZE];
 
-if (c == BUF_FLUSH || i >= WRITE_BUF_SIZE)
+if (c == BUF_FLUSH || i >=[WRITE_BUF_SIZE])
 {
 write(1, buf, i);
 i = 0;
