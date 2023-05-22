@@ -36,7 +36,7 @@ return (0);
 
 /**
 * _mysetenv – Initialize a new environment variable,
-*             or modify an existing one
+* or modify an existing one
 * @info: structure that contains potential arguments usedd to maintain
 * constant function prototype.
 *  Return: Always 0
@@ -45,7 +45,7 @@ int _mysetenv(info_t *info)
 {
 if (info->argc != 3)
 {
-_eputs(“Wrong number of arguments\n”);
+_eputs("Wrong number of arguements\n");
 return (1);
 }
 if (_setenv(info, info->argv[1], info->argv[2]))
@@ -61,14 +61,14 @@ return (1);
 */
 int _myunsetenv(info_t *info)
 {
-int I;
+int i;
 
 if (info->argc == 1)
 {
-_eputs(“Too few arguments.\n”);
+_eputs("Not enough arguements.\n");
 return (1);
 }
-for (I = 1; I <= info->argc; i++)
+for (i = 1; i <= info->argc; i++)
 _unsetenv(info, info->argv[i]);
 
 return (0);
@@ -83,9 +83,9 @@ return (0);
 int populate_env_list(info_t *info)
 {
 list_t *node = 0;
-size_t I;
+size_t i;
 
-for (I = 0; environ[i]; i++)
+for (i = 0; environ[i]; i++)
 add_node_end(&node, environ[i], 0);
 info->env = node;
 return (0);

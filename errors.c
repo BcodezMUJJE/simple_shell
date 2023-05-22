@@ -8,11 +8,11 @@
 */
 void _eputs(char *str)
 {
-int I = 0;
+int i = 0;
 
 if (!str)
 return;
-while (str[i] != ‘\0’)
+while (str[i] != '\0')
 {
 _eputchar(str[i]);
 i++;
@@ -28,10 +28,10 @@ i++;
 */
 int _eputchar(char c)
 {
-static int I;
+static int i;
 static char buf[WRITE_BUF_SIZE];
 
-if (c == BUF_FLUSH || I >= WRITE_BUF_SIZE)
+if (c == BUF_FLUSH || i >= WRITE_BUF_SIZE)
 {
 write(2, buf, i);
 i = 0;
@@ -51,10 +51,10 @@ return (1);
 */
 int _putfd(char c, int fd)
 {
-static int I;
+static int i;
 static char buf[WRITE_BUF_SIZE];
 
-if (c == BUF_FLUSH || I >= WRITE_BUF_SIZE)
+if (c == BUF_FLUSH || i >= WRITE_BUF_SIZE)
 {
 write(fd, buf, i);
 i = 0;
@@ -67,13 +67,13 @@ return (1);
 /**
 * _putsfd – prints an input string
 * @str: the string to be printed
-* @fd: the filedescriptor written to
+* @fd:filedescriptor written to
 *
 * Return: number of chars put
 */
 int _putsfd(char *str, int fd)
 {
-int I = 0;
+int i = 0;
 
 if (!str)
 return (0);

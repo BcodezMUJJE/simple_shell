@@ -27,7 +27,7 @@ return (info->environ);
 int _unsetenv(info_t *info, char *var)
 {
 list_t *node = info->env;
-size_t I = 0;
+size_t i = 0;
 char *p;
 
 if (!node || !var)
@@ -36,7 +36,7 @@ return (0);
 while (node)
 {
 p = starts_with(node->str, var);
-if (p && *p == ‘=’)
+if (p && *p == '=')
 {
 info->env_changed = delete_node_at_index(&(info->env), i);
 i = 0;
@@ -59,7 +59,7 @@ return (info->env_changed);
  */
 int _setenv(info_t *info, char *var, char *value)
 {
-char *buf = NULL;
+char *buf = 0;
 list_t *node;
 char *p;
 
@@ -70,13 +70,13 @@ buf = malloc(_strlen(var) + _strlen(value) + 2);
 if (!buf)
 return (1);
 _strcpy(buf, var);
-_strcat(buf, “=”);
+_strcat(buf, "=");
 _strcat(buf, value);
 node = info->env;
 while (node)
 {
 p = starts_with(node->str, var);
-if (p && *p == ‘=’)
+if (p && *p == '=')
 {
 free(node->str);
 node->str = buf;

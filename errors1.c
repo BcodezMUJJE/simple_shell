@@ -8,17 +8,17 @@
 */
 int _erratoi(char *s)
 {
-int I = 0;
+int i = 0;
 unsigned long int result = 0;
 
 if (*s == '+')
 s++;  /* TODO: why does this make main return 255? */
-for (I = 0;  s[i] != '\0'; i++)
+for (i = 0;  s[i] != '\0'; i++)
 {
 if (s[i] >= '0' && s[i] <= '9')
 {
 result *= 10;
-result += (s[i] – '0');
+result += (s[i] - '0');
 if (result > INT_MAX)
 return (-1);
 }
@@ -56,30 +56,30 @@ _eputs(estr);
 int print_d(int input, int fd)
 {
 int (*__putchar)(char) = _putchar;
-int I, count = 0;
+int i, count = 0;
 unsigned int _abs_, current;
 
 if (fd == STDERR_FILENO)
-_putchar = _eputchar;
+__putchar = _eputchar;
 if (input < 0)
 {
 _abs_ = -input;
-_putchar('-');
+__putchar('-');
 count++;
 }
 else
 _abs_ = input;
 current = _abs_;
-for (I = 1000000000; I > 1; I /= 10)
+for (i = 1000000000; i > 1; i /= 10)
 {
 if (_abs_ / i)
 {
-_putchar('0' + current / i);
+__putchar('0' + current / i);
 count++;
 }
-current %= I;
+current %= i;
 }
-_putchar('0' + current);
+__putchar('0' + current);
 count++;
 
 return (count);
@@ -107,14 +107,16 @@ n = -num;
 sign = '-';
 
 }
-array = flags & CONVERT_LOWERCASE ? “0123456789abcde" : “0123456789ABCDE";
+array = flags & CONVERT_LOWERCASE ? "0123456789abcdef" : "0123456789ABCDEF";
 ptr = &buffer[49];
 *ptr = '\0';
 
-do {
+do	
+{
 *--ptr = array[n % base];
-N /= base;
-} while (n != 0);
+n /= base;
+}
+while (n != 0);
 
 if (sign)
 *--ptr = sign;
@@ -129,10 +131,10 @@ return (ptr);
 */
 void remove_comments(char *buf)
 {
-int I;
+int i;
 
-for (I = 0; buf[i] != '\0'; i++)
-if (buf[i] == '#' && (!i || buf[I – 1] == ' '))
+for (i = 0; buf[i] != '\0'; i++)
+if (buf[i] == '#' && (!i || buf[i - 1] == ' '))
 {
 buf[i] = '\0';
 break;
