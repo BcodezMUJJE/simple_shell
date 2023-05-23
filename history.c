@@ -110,7 +110,18 @@ return (info->histcount);
 *
 * Return: 0 Always.
 */
+int build_history_list(info_t *info, char *buf, int linecount)
+{
+list_t *node = NULL;
 
+if (info->history)
+node = info->history;
+add_node_end(&node, buf, linecount);
+
+if (!info->history)
+info->history = node;
+return (0);
+}
 
 /**
 * renumber_history – re-numbers  history linked list after change
@@ -118,4 +129,15 @@ return (info->histcount);
 *
 * Return: New histcount
 */
+int renumber_history(info_t *info)
+{
+list_t *node = info->history;
+int i = 0;
 
+while (node)
+{
+node->num = i++;
+node = node->next;
+}
+return (info->histcount = i);
+}

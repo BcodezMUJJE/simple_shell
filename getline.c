@@ -35,14 +35,13 @@ r--;
 }
 info->linecount_flag = 1;
 remove_comments(*buf);
-build_history_list(info, *buf, info->histcount++);
+info->histcount++;
 /* if (_strchr(*buf, ';')) is this a command chain? */
-{
 *len = r;
 info->cmd_buf = buf;
 }
 }
-}
+
 return (r);
 }
 

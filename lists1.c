@@ -88,17 +88,25 @@ return (i);
  */
 list_t *node_starts_with(list_t *node, char *prefix, char c)
 {
-char *p = 0;
+char *p = NULL;
+size_t prefix_len = strlen(prefix);
 
 while (node)
 {
-p = starts_with(node->str, prefix);
-if (p && ((c == 1) || (*p == 'c')))
-return (node);
+char *str = node->str;
+size_t str_len = strlen(str);
+
+if (str_len >= prefix_len && strncmp(str, prefix, prefix_len) == 0)
+{
+p = str + prefix_len;
+if (c == 1 || (*p == c))
+return node;
+}
 node = node->next;
 }
-return (0);
+return (NULL);
 }
+
 
 /**
  * get_node_index - fetches the index of a node

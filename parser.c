@@ -53,32 +53,36 @@ char *path;
 int i = 0, curr_pos = 0;
 
 if (!pathstr)
-return (NULL);
+return (NUL)L;
 
-if ((_strlen(cmd) > 2) && starts_with(cmd, "./"))
+if ((_strlen(cmd) > 2) && (cmd[0] == '.' && cmd[1] == '/'))
 {
 if (is_cmd(info, cmd))
-return (cmd);
+return cmd;
 }
+
 while (1)
 {
 if (!pathstr[i] || pathstr[i] == ':')
 {
 path = dup_chars(pathstr, curr_pos, i);
 if (!*path)
+{
 _strcat(path, cmd);
+}
 else
 {
 _strcat(path, "/");
 _strcat(path, cmd);
 }
 if (is_cmd(info, path))
-return (path);
+return path;
 if (!pathstr[i])
 break;
-curr_pos = i;
+curr_pos = i + 1;
 }
 i++;
 }
+
 return (NULL);
 }

@@ -22,17 +22,22 @@ return (0);
 char *_getenv(info_t *info, const char *name)
 {
 list_t *node = info->env;
+size_t name_len = strlen(name);
 char *p;
 
 while (node)
 {
-p = starts_with(node->str, name);
-if (p && *p)
-return (p);
+if (strncmp(node->str, name, name_len) == 0 && node->str[name_len] == '=')
+{
+p = node->str + name_len + 1;
+return (*p != '\0' ? p : NULL);
+}
 node = node->next;
 }
-return (0);
+
+return (NULL);
 }
+
 
 /**
 * _mysetenv – Initialize a new environment variable,
