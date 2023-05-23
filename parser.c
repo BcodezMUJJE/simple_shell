@@ -53,7 +53,7 @@ char *path;
 int i = 0, curr_pos = 0;
 
 if (!pathstr)
-return (NUL)L;
+return (NULL);
 
 if ((_strlen(cmd) > 2) && (cmd[0] == '.' && cmd[1] == '/'))
 {
