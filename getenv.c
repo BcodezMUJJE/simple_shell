@@ -1,11 +1,11 @@
 #include "shell.h"
 
 /**
-* get_environ –  returns the string array copy of our environ
-* @info: a structure that contains  potential arguments used to maintain
-* constant function prototype.
-* Return: Always 0
-*/
+ * get_environ – returns the string array copy of our environ
+ * @info: a structure that contains potential arguments used to maintain
+ *         constant function prototype.
+ * Return: Always 0
+ */
 char **get_environ(info_t *info)
 {
 if (!info->environ || info->env_changed)
@@ -28,14 +28,15 @@ int _unsetenv(info_t *info, char *var)
 {
 list_t *node = info->env;
 size_t i = 0;
+char *p;
 
 if (!node || !var)
 return (0);
 
 while (node)
 {
-*p = starts_with(node->str, var);
-if (p && *p == '=')
+p = strchr(node->str, '=');
+if (p && strncmp(node->str, var, p - node->str) == 0)
 {
 info->env_changed = delete_node_at_index(&(info->env), i);
 i = 0;
@@ -76,11 +77,8 @@ _strcat(buf, value);
 node = info->env;
 while (node)
 {
-p = node->str;
-while (*p && *p != '=')
-p++;
-
-if (*p == '=' && _strcmp(node->str, var) == 0)
+p = strchr(node->str, '=');
+if (p && strncmp(node->str, var, p - node->str) == 0)
 {
 free(node->str);
 node->str = buf;
@@ -90,6 +88,7 @@ return (0);
 
 node = node->next;
 }
+
 add_node_end(&(info->env), buf, 0);
 free(buf);
 info->env_changed = 1;
