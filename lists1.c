@@ -100,7 +100,7 @@ if (str_len >= prefix_len && strncmp(str, prefix, prefix_len) == 0)
 {
 p = str + prefix_len;
 if (c == 1 || (*p == c))
-return node;
+return (node);
 }
 node = node->next;
 }
