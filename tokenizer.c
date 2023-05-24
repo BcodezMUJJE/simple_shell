@@ -21,7 +21,7 @@ numwords++;
 
 if (numwords == 0)
 return (0);
-s = malloc((1 + numwords) * sizeof(char *));
+s = malloc((1 + numwords) *sizeof(char *));
 if (!s)
 return (0);
 for (i = 0, j = 0; j < numwords; j++)
@@ -67,7 +67,7 @@ if ((str[i] != d && str[i + 1] == d) ||
 numwords++;
 if (numwords == 0)
 return (0);
-s = malloc((1 + numwords) * sizeof(char *));
+s = malloc((1 + numwords) *sizeof(char *));
 if (!s)
 return (0);
 for (i = 0, j = 0; j < numwords; j++)
@@ -76,7 +76,7 @@ while (str[i] == d && str[i] != d)
 i++;
 k = 0;
 while (str[i + k] != d && str[i + k] && str[i + k] != d)
-			k++;
+k++;
 s[j] = malloc((k + 1) * sizeof(char));
 if (!s[j])
 {
