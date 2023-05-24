@@ -33,13 +33,14 @@ _eputs(av[1]);
 _eputchar('\n');
 exit(127);
 }
-return EXIT_FAILURE;
+
+return (EXIT_FAILURE);
 }
 info.readfd = fd;
 }
-
 populate_env_list(&info);
 read_history(&info);
 hsh(&info, av);
-return EXIT_SUCCESS;
+
+return (EXIT_SUCCESS);
 }
