@@ -58,19 +58,18 @@ return (s);
 }
 
 /**
-**_strchr – finds a character in a string
+**_strchr – locates the position of a specific
+*character within a given string
 *@s: string to be parsed
 *@c: character to search
 *Return: (s) a pointer to the memory area s
 */
 char *_strchr(char *s, char c)
 {
-do
-{
+do	{
 if (*s == c)
 return (s);
-}
-while (*s++ != '\0');
+}	while (*s++ != '\0');
 
 return (0);
 }
