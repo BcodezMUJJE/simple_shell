@@ -16,7 +16,7 @@ unsigned int i;
 
 for (i = 0; i < n; i++)
 s[i] = b;
-return s;
+return (s);
 }
 
 /**
@@ -46,25 +46,19 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 char *p;
 
 if (!ptr)
-return malloc(new_size);
-
+return (malloc(new_size));
 if (!new_size)
-{
-free(ptr);
-return NULL;
-}
-
+return (free(ptr), NULL);
 if (new_size == old_size)
-return ptr;
-
+return (ptr);
 p = malloc(new_size);
 if (!p)
-return NULL;
+return (NULL);
 
 old_size = old_size < new_size ? old_size : new_size;
 
 memcpy(p, ptr, old_size);
 free(ptr);
 
-return p;
+return (p);
 }
