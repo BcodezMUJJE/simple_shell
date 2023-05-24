@@ -29,7 +29,7 @@ i++;
  */
 int _eputchar(char c)
 {
-static int i = 0;
+static int i;
 static char buf[WRITE_BUF_SIZE];
 
 if (c == BUF_FLUSH || i >= WRITE_BUF_SIZE)
@@ -54,7 +54,7 @@ return (1);
  */
 int _putfd(char c, int fd)
 {
-static int i = 0;
+static int i;
 static char buf[WRITE_BUF_SIZE];
 
 if (c == BUF_FLUSH || i >= WRITE_BUF_SIZE)

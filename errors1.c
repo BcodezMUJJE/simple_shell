@@ -47,7 +47,7 @@ _eputs(estr);
 }
 
 /**
-* print_d – prints a decimal (integer) number (base 10)
+* print_d – this function prints a decimal (integer) number (base 10)
 * @input: the input
 * @fd: the filedescriptor to write to
 *
@@ -111,12 +111,10 @@ array = flags & CONVERT_LOWERCASE ? "0123456789abcdef" : "0123456789ABCDEF";
 ptr = &buffer[49];
 *ptr = '\0';
 
-do	
-{
+do	{
 *--ptr = array[n % base];
 n /= base;
-}
-while (n != 0);
+} while (n != 0);
 
 if (sign)
 *--ptr = sign;
