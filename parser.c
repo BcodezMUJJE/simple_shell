@@ -58,7 +58,7 @@ return (NULL);
 if ((_strlen(cmd) > 2) && (cmd[0] == '.' && cmd[1] == '/'))
 {
 if (is_cmd(info, cmd))
-return cmd;
+return (cmd);
 }
 
 while (1)
@@ -76,7 +76,7 @@ _strcat(path, "/");
 _strcat(path, cmd);
 }
 if (is_cmd(info, path))
-return path;
+return (path);
 if (!pathstr[i])
 break;
 curr_pos = i + 1;
